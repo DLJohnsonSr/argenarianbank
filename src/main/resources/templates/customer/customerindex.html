@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head th:replace="/fragments/globaltemp::head"></head>
+<body>
+
+<div th:replace="/fragments/globaltemp::nav"></div>
+
+<div class="container-fluid">
+
+    <div th:fragment="index">
+
+
+        <!--Customer info section-->
+        <h6>Customer Info</h6>
+        <div replace="/fragments/customerinfo::info"></div>
+
+        <!--Customer options-->
+        <h6>Banking Options</h6>
+        <div>
+            <a th:href="@{/createaccount}">Create New Account</a>
+            <br>
+            <a href="#">Pay a bill</a>
+            <br>
+            <a href="#">Transfer Funds</a>
+        </div>
+
+        <!--Account Summary-->
+        <h6>Account Summary</h6>
+        <div th:replace="/fragments/accountsummary::summary"></div>
+    </div>
+</div>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<div th:replace="/fragments/globaltemp::scripts"></div>
+
+</body>
+</html>

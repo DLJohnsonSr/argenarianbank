@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head th:replace="/fragments/globaltemp::head"></head>
+<body>
+
+<div th:replace="/fragments/globaltemp::nav"></div>
+
+<div class="container-fluid">
+
+    <!--Go to account summary page-->
+    <div>
+        <a th:href="@{/viewcustomer/{custId}(custId=${customer.id})}">View Customer Page</a>
+    </div>
+    <!--Add transaction form-->
+    <div>
+        <a th:href="@{/addtransaction/{custId}/{acctId}(custId=${customer.id},acctId=${account.id})}">Add Transaction</a>
+    </div>
+
+
+    <!--Non-posted transaction list-->
+    <div >
+        <h3>Unposted Transactions</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Transaction #</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Credits</th>
+                    <th scope="col">Debits</th>
+                    <!--<th>Balance</th>-->
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="eachTrans:${transactions}" th:if="${eachTrans.posted}==false">
+                    <td th:text="${eachTrans.date}"></td>
+                    <td th:text="${eachTrans.transactionNumber}"></td>
+                    <td th:text="${eachTrans.description}"></td>
+                    <td th:text="${eachTrans.creditOrDebit}=='Credit'?${eachTrans.amount}:' '"></td>
+                    <td th:text="${eachTrans.creditOrDebit}=='Debit'?'-'+${eachTrans.amount}:' '"></td>
+                    <!--<td th:text="${eachTrans.transactionBalance}"></td>-->
+                    <td>
+                        <a th:href="@{/posttransaction/{custId}/{acctId}/{transId}(custId=${customer.id},acctId=${account.id},transId=${eachTrans.id})}">Post</a>
+                        <a th:href="@{/edittransaction/{custId}/{acctId}/{transId}(custId=${customer.id},acctId=${account.id},transId=${eachTrans.id})}">Edit</a>
+                        <a th:href="@{/deletetransaction/{custId}/{acctId}/{transId}(custId=${customer.id},acctId=${account.id},transId=${eachTrans.id})}">Delete</span></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!--Post transaction list-->
+    <div>
+        <h3>Posted Transactions</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Transaction #</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Credits</th>
+                    <th scope="col">Debits</th>
+                    <th scope="col">Balance</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="eachTrans:${transactions}" th:if="${eachTrans.posted}==true">
+                    <td th:text="${eachTrans.date}"></td>
+                    <td th:text="${eachTrans.transactionNumber}"></td>
+                    <td th:text="${eachTrans.description}"></td>
+                    <td th:text="${eachTrans.creditOrDebit}=='Credit'?${eachTrans.amount}:' '"></td>
+                    <td th:text="${eachTrans.creditOrDebit}=='Debit'?'-'+${eachTrans.amount}:' '"></td>
+                    <td th:text="${eachTrans.transactionBalance}"></td>
+                    <td>
+                        <a th:href="@{/edittransaction/{custId}/{acctId}/(custId=${customer.id},acctId=${account.id},transId=${eachTrans.id})}">Edit</a>
+                        <a th:href="@{/deletetransaction/{custId}/{acctId}/{transId}(custId=${customer.id},acctId=${account.id},transId=${eachTrans.id})}">Delete</span></a>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">ACCOUNT BALANCE</th>
+                    <td th:text="${account.currentBalance}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+</div>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<div th:replace="/fragments/globaltemp::scripts"></div>
+
+</body>
+</html>

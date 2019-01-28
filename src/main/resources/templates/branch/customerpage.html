@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head th:replace="/fragments/globaltemp::head"></head>
+<body>
+
+<div th:replace="/fragments/globaltemp::nav"></div>
+
+<div class="container-fluid">
+
+    <div th:replace="/fragments/customerinfo::info"></div>
+
+    <div>
+        <a th:href="@{/openaccount/{custId}(custId=${customer.id})}">Open New Account</a>
+    </div>
+
+    <div th:replace="/fragments/accountsummary::summary"></div>
+
+</div>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<div th:replace="/fragments/globaltemp::scripts"></div>
+
+</body>
+</html>

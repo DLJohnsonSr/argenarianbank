@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head th:replace="/fragments/globaltemp::head"></head>
+<body>
+
+<div th:replace="/fragments/globaltemp::nav"></div>
+
+<div class="container-fluid">
+
+    <div th:fragment="info">
+        <span th:text="'Name: '+${customer.firstName}+' '+${customer.lastName}"></span>
+        <br>
+        <span th:text="'Address: '+${customer.addressStreet}+', '+${customer.addressCity}+', '+${customer.addressState}+' '+${customer.addressZip}"></span>
+        <br>
+        <span th:text="'Phone Number: '+${customer.phone}"></span>
+        <br>
+        <span th:text="'Email: '+${customer.email}"></span>
+    </div>
+
+</div>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<div th:replace="/fragments/globaltemp::scripts"></div>
+
+</body>
+</html>

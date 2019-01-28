@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head th:replace="/fragments/globaltemp::head"></head>
+<body>
+
+    <div th:replace="/fragments/globaltemp::nav"></div>
+
+    <div class="container-fluid">
+
+        <div th:replace="/customer/customerindex::index"></div>
+
+        <div th:replace="/branch/branchindex::index"></div>
+
+    </div>
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <div th:replace="/fragments/globaltemp::scripts"></div>
+
+</body>
+</html>
