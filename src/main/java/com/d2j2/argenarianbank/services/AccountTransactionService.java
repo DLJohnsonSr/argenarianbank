@@ -19,14 +19,12 @@ public class AccountTransactionService {
     TransactionRepository transRepo;
 
 
-//    NOTE: 1) creates start balance transaction
-//          2) saves new transaction
-//          3) updates account balance
+//    NOTE: 1) add account number
+//          2) creates start balance transaction
+//          3) saves new transaction
+//          4) updates account balance
     public void newAccountSetup(Account acct){
-//        NEED ORDER
-//        NEED ORDER
-//        NEED ORDER
-        acct.setAccountNumber(1 + acctRepo.findAll(Sort).iterator().next().getAccountNumber());
+        acct.setAccountNumber(1 + acctRepo.findAll(Sort.by(Sort.Order.desc("accountNumber"))).iterator().next().getAccountNumber());
         acctRepo.save(acct);
         Transaction thisTrans = new Transaction(true,0, acct.getOpenDate(),"Start Balance","Credit", acct.getStartBalance(),true, acct);
         saveNewTransaction(acct.getId(), thisTrans);

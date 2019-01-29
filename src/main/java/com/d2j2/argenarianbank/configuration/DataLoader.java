@@ -29,7 +29,7 @@ public class DataLoader implements CommandLineRunner {
         Customer aCustomer = new Customer("John","Smith","123 Main St.","Sometown","Delaware","11111","555-555-5555","me@you.com");
         custRepo.save(aCustomer);
 
-        Account anAccount = new Account(1,"Checking","01/01/2019",100);
+        Account anAccount = new Account("Checking","01/01/2019",100);
         acctRepo.save(anAccount);
         acctTransServ.newAccountSetup(anAccount);
         aCustomer.addAccounts(anAccount);

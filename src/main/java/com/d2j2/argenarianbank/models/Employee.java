@@ -22,6 +22,9 @@ public class Employee {
     private String phone;
     private String email;
 
+    public Employee(){
+    }
+
     public long getId() {
         return id;
     }

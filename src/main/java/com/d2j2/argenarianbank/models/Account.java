@@ -21,16 +21,11 @@ public class Account {
     private Set<Customer>accountCustomers;
 
     public Account() {
-        this.accountNumber = accountNumber;
-        this.accountName = accountName;
-        this.openDate = openDate;
-        this.startBalance = startBalance;
         this.transactionSet = new HashSet<>();
         this.accountCustomers = new HashSet<>();
     }
 
-    public Account(int accountNumber,String accountName, String openDate, double startBalance) {
-        this.accountNumber = accountNumber;
+    public Account(String accountName, String openDate, double startBalance) {
         this.accountName = accountName;
         this.openDate = openDate;
         this.startBalance = startBalance;
