@@ -5,18 +5,26 @@
 
     <div th:replace="/fragments/globaltemp::nav"></div>
 
-    <div class="container-fluid">
+    <div th:fragment="index">
+        <h2>Accounts</h2>
+        <a th:href="@{/createcustomer}">Create New Customer</a>
+        <br>
+        <a th:href="@{/viewallcustomers}">View All Customers</a>
+        <br>
+        <a th:href="@{/searchcustomers}">Search For Customer</a>
+        <br>
+        <a th:href="@{/searchaccounts}">Find Account by Account Number</a>
+    </div>
 
-        <div th:replace="/customer/customerindex::index"></div>
-
-        <div th:replace="/branch/branchindex::index"></div>
-
+    <div>
+        <br>
+        <h2>Message Center</h2>
+        <a th:href="@{/messagecenter}">Go to Messaging Page</a>
     </div>
 
 
 <!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <div th:replace="/fragments/globaltemp::scripts"></div>
+
 
 </body>
 </html>

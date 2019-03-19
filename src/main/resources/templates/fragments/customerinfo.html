@@ -3,9 +3,8 @@
 <head th:replace="/fragments/globaltemp::head"></head>
 <body>
 
-<div th:replace="/fragments/globaltemp::nav"></div>
+    <div th:replace="/fragments/globaltemp::nav"></div>
 
-<div class="container-fluid">
 
     <div th:fragment="info">
         <span th:text="'Name: '+${customer.firstName}+' '+${customer.lastName}"></span>
@@ -17,10 +16,9 @@
         <span th:text="'Email: '+${customer.email}"></span>
     </div>
 
-</div>
+
 <!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<div th:replace="/fragments/globaltemp::scripts"></div>
+
 
 </body>
 </html>

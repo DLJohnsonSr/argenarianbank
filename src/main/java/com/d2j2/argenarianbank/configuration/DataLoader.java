@@ -26,7 +26,7 @@ public class DataLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        Customer aCustomer = new Customer("John","Smith","123 Main St.","Sometown","Delaware","11111","555-555-5555","me@you.com");
+        Customer aCustomer = new Customer("John","Smith","123 Main St.","Sometown","DC","11111","555-555-5555","me@you.com");
         custRepo.save(aCustomer);
 
         Account anAccount = new Account("Checking","01/01/2019",100);

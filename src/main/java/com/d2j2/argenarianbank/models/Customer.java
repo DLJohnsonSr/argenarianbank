@@ -1,6 +1,10 @@
 package com.d2j2.argenarianbank.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -10,13 +14,30 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @NotNull
+    @Size(min = 2, max = 25)
     private String firstName;
+    @NotNull
+    @Size(min = 2, max = 25)
     private String lastName;
+    @NotNull
+    @Size(min = 4, max = 32)
     private String addressStreet;
+    @NotNull
+    @Size(min = 2, max = 16)
     private String addressCity;
+    @NotNull
+    @Size(min = 2, max = 2)
     private String addressState;
+    @NotNull
+    @Digits(integer = 5, fraction = 0)
     private String addressZip;
+    @NotNull
+    @Size(min = 10, max = 20)
     private String phone;
+    @NotNull
+    @Email
+    @Size(min = 7, max = 50)
     private String email;
     @ManyToMany
     private Set<Account>customerAccounts;

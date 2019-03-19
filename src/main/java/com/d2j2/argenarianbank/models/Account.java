@@ -1,6 +1,10 @@
 package com.d2j2.argenarianbank.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -10,10 +14,15 @@ public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @NotNull
     private int accountNumber;
+    @NotNull
     private String accountName;
+    @NotEmpty
     private String openDate;
+    @NotNull
     private double startBalance;
+    @NotNull
     private double currentBalance;
     @OneToMany(mappedBy = "account")
     private Set<Transaction>transactionSet;

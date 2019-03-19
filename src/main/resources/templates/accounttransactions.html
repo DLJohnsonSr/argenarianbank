@@ -3,26 +3,24 @@
 <head th:replace="/fragments/globaltemp::head"></head>
 <body>
 
-<div th:replace="/fragments/globaltemp::nav"></div>
-
-<div class="container-fluid">
+    <div th:replace="/fragments/globaltemp::nav"></div>
 
     <!--Go to account summary page-->
     <div>
         <a th:href="@{/viewcustomer/{custId}(custId=${customer.id})}">View Customer Page</a>
     </div>
+
     <!--Add transaction form-->
     <div>
         <a th:href="@{/addtransaction/{custId}/{acctId}(custId=${customer.id},acctId=${account.id})}">Add Transaction</a>
     </div>
-
 
     <!--Non-posted transaction list-->
     <div >
         <h3>Unposted Transactions</h3>
         <table class="table">
             <thead>
-                <tr>
+                <tr class="th-row">
                     <th scope="col">Date</th>
                     <th scope="col">Transaction #</th>
                     <th scope="col">Description</th>
@@ -54,7 +52,7 @@
         <h3>Posted Transactions</h3>
         <table class="table">
             <thead>
-                <tr>
+                <tr class="th-row">
                     <th scope="col">Date</th>
                     <th scope="col">Transaction #</th>
                     <th scope="col">Description</th>
@@ -85,10 +83,8 @@
     </div>
 
 
-</div>
 <!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<div th:replace="/fragments/globaltemp::scripts"></div>
+
 
 </body>
 </html>

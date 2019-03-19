@@ -3,13 +3,11 @@
 <head th:replace="/fragments/globaltemp::head"></head>
 <body>
 
-<div th:replace="/fragments/globaltemp::nav"></div>
-
-<div class="container-fluid">
+    <div th:replace="/fragments/globaltemp::nav"></div>
 
     <table class="table">
         <thead>
-        <tr>
+        <tr class="th-row">
             <!--<th scope="col">Action</th>-->
             <th scope="col">Account #</th>
             <th scope="col">Balance</th>
@@ -26,12 +24,10 @@
         </tr>
         </tbody>
     </table>
-</div>
 
-</div>
+
 <!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<div th:replace="/fragments/globaltemp::scripts"></div>
+
 
 </body>
 </html>

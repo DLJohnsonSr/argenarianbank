@@ -1,6 +1,9 @@
 package com.d2j2.argenarianbank.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -10,15 +13,24 @@ public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @NotNull
     private boolean isStartBalance;
+    @NotNull
     private int transactionNumber;
+    @NotEmpty
     private String stringDate;
     private LocalDate date;
+    @NotEmpty
+    @Size(min = 3, max = 40)
     private String description;
     private String IncomeOrExpense;
+    @NotEmpty
     private String creditOrDebit;
+    @NotNull
     private double amount;
+    @NotNull
     private double transactionBalance;
+    @NotNull
     private boolean posted;
     @ManyToOne
     private Account account;

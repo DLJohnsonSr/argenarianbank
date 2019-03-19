@@ -1,0 +1,436 @@
+
+/*-------------------- GLOBAL styles ------------------------*/
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-size: 1em;
+}
+img{
+    display: block;
+    margin: auto;
+    width: 50%;
+    height: 50%;
+}
+
+/* -------------------- TEXT ---------------------------*/
+html{
+    font-family: 'Times New Roman', Times, serif;
+}
+h1, h2, h3, h4, h5, h6{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    /*text-align: center;*/
+    margin: 1.1em 0;
+}
+h1{font-size: 2em;} /*Page title & headers */
+h2{font-size: 1.5em;} /* Section headings */
+h3{font-size: 1.3em;} /* Subsection headings */
+h4{font-size: 1em; margin: 1.1em 0; text-align: left;} /* Minor heading */
+h5{font-size: 0.875em; margin: 1.2em 0;} /* captions large */
+h6{font-size: 0.7em; margin: 1.2em 0;} /* captions small */
+p{
+    margin: 1em 0;
+    line-height: 1.4em;
+    text-indent: 1.5em;
+}
+
+/*------------------------ LAYOUT ----------------------*/
+nav{
+    width: 100%;
+}
+/* NAVBAR start */
+.navbar{
+    /* position: fixed; */
+    /* z-index: 1; */
+    /* top: 0; */
+    /* left: 0;    */
+    position: sticky;
+    width: 100%;
+    height: 3.1em;
+    background-color: gray;
+}
+.navbar ul{
+    list-style-type: none;
+}
+.navbar li{
+    display: inline;
+}
+.navbar li a{
+    display: inline-block;
+    padding: 0.625em 0.75em;
+    color: lightgray;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+/* .navbar li a:hover{} */
+.navbar img{
+    float: left;
+    width: 2.45em;
+    height: 2.45em;
+    margin: 0.3em;
+}
+/* NAVBAR end */
+header{
+    padding: 1.25em;
+    width: 100%;
+    text-align: center;
+    /* background-color: ; */
+}
+/* section{} */
+/* article{} */
+/* aside{} */
+
+footer{
+    padding: 1.25em;
+    text-align: center;
+    /* background-color: ; */
+}
+/*---------------------- GRID ----------------------*/
+.row{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.row::after{
+    content: "";
+    clear: both;
+    display: table;
+}
+[class*="col-"] {
+    float: left;
+    padding: 0 20px;
+}
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+.left{
+    flex: 20%;
+    width: 20%;
+    padding: 0 1.25em;
+}
+.center{
+    flex: 60%;
+    width: 60%;
+    padding: 0 1.25em;
+}
+.right{
+    flex: 20%;
+    width: 20%;
+    padding: 0 1.25em;
+}
+
+/*------------------- FORMS ---------------------*/
+form{
+    width: 100%;
+    margin: 0;
+    padding: 1.25em;
+    /* background-color: ; */
+}
+.form-group{
+    margin-bottom: 1.25em;
+}
+.form-text-label{
+    display: inline-block;
+    width: 24%;
+    font-size: 1.1em;
+}
+.form-text-input{
+    display: inline-block;
+    width: 74%;
+    border-radius: 0.375em;
+    padding: 0.375em 0.625em;
+}
+.form-text-input:focus{
+    background-color: lightgray;
+    border: 0.15em solid gray;
+}
+.form-select-label{
+    display: inline-block;
+    width: 24%;
+    font-size: 1.1em;
+}
+.form-select-input{
+    display: inline-block;
+    width: 74%;
+    border-radius: 0.375em;
+    padding: 0.375em 0.625em;
+}
+.form-select-input:focus{
+    background-color: lightgray;
+    border: 0.15em solid gray;
+}
+.form-radio-group{
+    display: inline;
+    padding: 0;
+}
+.form-radio-header{
+    display: block;
+    margin-bottom: 0.3em;
+    font-size: 1.1em;
+}
+.form-radio-label{
+    display: inline-block;
+    position: relative;
+    padding-left: 1.8em;
+    margin: 0.2em 0.5em;
+    cursor: pointer;
+    font-size: 1.1em;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.form-radio-input{
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    cursor: pointer;
+}
+.form-radio-mark{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 1em;
+    width: 1em;
+    background-color: white;
+    border: 0.1em solid black;
+    border-radius: 50%;
+}
+.form-radio-mark:hover{
+    background-color: lightgray;
+}
+.form-radio-group .form-radio-input:checked ~ .form-radio-mark{
+    background-color: gray;
+}
+.form-radio-mark::after{
+    content:"";
+    position: absolute;
+    display: none;
+}
+.form-radio-label .form-radio-input:checked ~ .form-radio-mark::after{
+    display: block;
+}
+.form-radio-label .form-radio-mark::after{
+    top: 0.23em;
+    left: 0.23em;
+    width: 0.375em;
+    height: 0.375em;
+    border-radius: 50%;
+    background: white;
+}
+.form-checkbox-group{
+    display: inline;
+}
+.form-checkbox-header{
+    display: block;
+    margin-bottom: 0.375em;
+    font-size: 1.1em;
+}
+.form-checkbox-label{
+    display: inline-block;
+    position: relative;
+    padding-left: 1.8em;
+    margin: 0.2em 0.5em;
+    cursor: pointer;
+    font-size: 1.1em;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.form-checkbox-input{
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    cursor: pointer;
+}
+.form-checkbox-mark{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 0.9em;
+    width: 0.9em;
+    background-color: white;
+    border: 0.1em solid black;
+}
+.form-checkbox-mark:hover{
+    background-color: lightgray;
+}
+.form-checkbox-group .form-checkbox-input:checked ~ .form-checkbox-mark{
+    background-color: gray;
+}
+.form-checkbox-mark::after{
+    content:"";
+    position: absolute;
+    display: none;
+}
+.form-checkbox-label .form-checkbox-input:checked ~ .form-checkbox-mark::after{
+    display: block;
+}
+.form-checkbox-label .form-checkbox-mark::after{
+    top: 0;
+    left: 0.18em;
+    width: 0.2em;
+    height: 0.425em;
+    border: solid white;
+    border-width: 0 0.15em 0.15em 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.form-textarea-label{
+    width: 100%;
+    font-size: 1.1em;
+}
+.form-textarea-input{
+    margin-top: 0.625em;
+    width: 100%;
+    height: 8em;
+    padding: 0.625em 1.25em;
+    border-radius: 0.375em;
+    resize: none;
+    font-weight: bold;
+}
+.form-textarea-input:focus{
+    background-color: lightgray;
+    border: 0.15em solid gray;
+}
+.form-button{
+    display: block;
+    background-color: lightgray;
+    margin: auto;
+    padding: 0.625em;
+    width: 100%;
+    border-radius: 0.625em;
+    cursor: pointer;
+}
+.form-button:hover{
+    background-color: gray;
+    color: white;
+    font-weight: bold;
+}
+
+
+/*------------------- TABLES ------------------- */
+table,th,td{
+    border-collapse: collapse;
+}
+table{
+    width: 100%;
+    font-size: 1.1em;
+    vertical-align: middle;
+}
+tr{
+    border-bottom: 0.1em solid gray;
+}
+tr:nth-child(even){
+    background-color: lightgray;
+}
+th,td{
+    padding: 0.625em;
+}
+th{
+    height: 2.5em;
+    text-align: start;
+}
+.th-row{
+    background-color: darkgray;
+    color: white;
+}
+td{
+    height: 2em;
+}
+
+/*------------------- MEDIA Queries -------------*/
+/* Mobile devices (portrait phones, less than 576px) */
+@media screen and (max-width: 576px){
+    .col-1-mo {width: 8.33%;}
+    .col-2-mo {width: 16.66%;}
+    .col-3-mo {width: 25%;}
+    .col-4-mo {width: 33.33%;}
+    .col-5-mo {width: 41.66%;}
+    .col-6-mo {width: 50%;}
+    .col-7-mo {width: 58.33%;}
+    .col-8-mo {width: 66.66%;}
+    .col-9-mo {width: 75%;}
+    .col-10-mo {width: 83.33%;}
+    .col-11-mo {width: 91.66%;}
+    .col-12-mo {width: 100%;}
+
+    /* FORMS */
+    .form-text-label{
+        width: 100%;
+    }
+    .form-text-input{
+        width: 100%;
+    }
+    .form-select-label{
+        width: 100%;
+    }
+    .form-select-input{
+        width: 100%;
+    }
+
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media screen and (max-width: 768px){
+    .col-1-sm {width: 8.33%;}
+    .col-2-sm {width: 16.66%;}
+    .col-3-sm {width: 25%;}
+    .col-4-sm {width: 33.33%;}
+    .col-5-sm {width: 41.66%;}
+    .col-6-sm {width: 50%;}
+    .col-7-sm {width: 58.33%;}
+    .col-8-sm {width: 66.66%;}
+    .col-9-sm {width: 75%;}
+    .col-10-sm {width: 83.33%;}
+    .col-11-sm {width: 91.66%;}
+    .col-12-sm {width: 100%;}
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media screen and (max-width: 999px){
+    .col-1-md {width: 8.33%;}
+    .col-2-md {width: 16.66%;}
+    .col-3-md {width: 25%;}
+    .col-4-md {width: 33.33%;}
+    .col-5-md {width: 41.66%;}
+    .col-6-md {width: 50%;}
+    .col-7-md {width: 58.33%;}
+    .col-8-md {width: 66.66%;}
+    .col-9-md {width: 75%;}
+    .col-10-md {width: 83.33%;}
+    .col-11-md {width: 91.66%;}
+    .col-12-md {width: 100%;}
+}
+
+/* Large devices (desktops, 992px and up) */
+@media screen and (max-width: 1200px){
+    .col-1-lg {width: 8.33%;}
+    .col-2-lg {width: 16.66%;}
+    .col-3-lg {width: 25%;}
+    .col-4-lg {width: 33.33%;}
+    .col-5-lg {width: 41.66%;}
+    .col-6-lg {width: 50%;}
+    .col-7-lg {width: 58.33%;}
+    .col-8-lg {width: 66.66%;}
+    .col-9-lg {width: 75%;}
+    .col-10-lg {width: 83.33%;}
+    .col-11-lg {width: 91.66%;}
+    .col-12-lg {width: 100%;}
+}

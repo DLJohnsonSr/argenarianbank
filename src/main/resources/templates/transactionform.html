@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head th:replace="/fragments/globaltemp::head"></head>
+<body>
+
+    <div th:replace="/fragments/globaltemp::nav"></div>
+
+    <form th:action="@{/savetransaction/{custId}/{acctId}(custId=${customer.id},acctId=${account.id})}" th:object="${transaction}" method="post">
+        <input type="hidden" th:field="*{id}">
+        <div class="form-group">
+            <label class="form-text-label" for="stringDate">Date: </label>
+            <input class="form-text-input" type="text" th:field="*{stringDate}" id="stringDate" placeholder="MM/dd/YYYY">
+            <span th:if="${#fields.hasErrors('stringDate')}" th:errors="*{stringDate}"></span>
+        </div>
+        <div class="form-group">
+            <label class="form-text-label" for="description">Description: </label>
+            <input class="form-text-input" type="text" th:field="*{description}" id="description" placeholder="Description">
+            <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
+        </div>
+        <div class="form-group">
+            <span class="form-radio-header">Debit or Credit</span>
+            <div class="form-radio-group">
+                <label class="form-radio-label" for="credit">
+                    <input class="form-radio-input" type="radio" id="credit" th:field="*{creditOrDebit}" th:value="credit">
+                    <span class="form-radio-mark"></span> <!-- add custom radio button -->
+                    Credit
+                </label>
+            </div>
+            <div class="form-radio-group">
+                <label class="form-radio-label" for="debit">
+                    <input class="form-radio-input" type="radio" id="debit" th:field="*{creditOrDebit}" th:value="debit">
+                    <span class="form-radio-mark"></span> <!-- add custom radio button -->
+                    Debit
+                </label>
+            </div>
+            <span th:if="${#fields.hasErrors('creditOrDebit')}" th:errors="*{creditOrDebit}"></span>
+        </div>
+        <div class="form-group">
+            <label class="form-text-label" for="amount">Amount: </label>
+            <input class="form-text-input" type="text" th:field="*{amount}" id="amount" placeholder="0.00">
+            <span th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}"></span>
+        </div>
+        <div class="form-checkbox-group">
+            <label class="form-checkbox-label" for="posted">
+                <input class="form-checkbox-input" type="checkbox" id="posted" th:field="*{posted}" value="true">
+                <span class="form-checkbox-mark"></span> <!-- add custom checkmark -->
+                Posted
+            </label>
+        </div>
+        <button type="submit" class="form-button">Save Transaction</button>
+    </form>
+
+
+<!-- Optional JavaScript -->
+
+
+</body>
+</html>

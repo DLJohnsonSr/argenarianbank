@@ -33,15 +33,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        String[] everyone = {};
-        String[] branch = {};
-        String[] corporate = {};
+        String[] everyone = {"/**", "/css/**", "/img/**", "/fragments/**", "/login", "/h2-console", "/admin/**"};
+        String[] branchEmployees = {};
+        String[] branchManagers = {};
+        String[] systemAdmin= {};
+        String[] presidents = {};
 
         http.authorizeRequests()
-                .antMatchers().authenticated()
-                .antMatchers().access("hasAuthority('BM') and hasAuthority('ADMIN') and hasAuthority('CORP')")
-                .antMatchers().access("hasAuthority('ADMIN') and hasAuthority('CORP')")
-                .antMatchers().access("hasAuthority('CORP')")
+                .antMatchers(everyone).permitAll()
+                .antMatchers(branchEmployees).authenticated()
+                .antMatchers(branchManagers).access("hasAuthority('BM') and hasAuthority('ADMIN') and hasAuthority('PRES')")
+                .antMatchers(systemAdmin).access("hasAuthority('ADMIN') and hasAuthority('PRES')")
+                .antMatchers(presidents).access("hasAuthority('PRES')")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().permitAll()
