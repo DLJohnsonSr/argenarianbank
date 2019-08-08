@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -27,20 +28,15 @@ public class Transaction {
     @NotEmpty
     private String creditOrDebit;
     @NotNull
-    private double amount;
+    private BigDecimal amount;
     @NotNull
-    private double transactionBalance;
+    private BigDecimal transactionBalance;
     @NotNull
     private boolean posted;
     @ManyToOne
     private Account account;
 
     public Transaction() {
-        this.stringDate = stringDate;
-        this.description = description;
-        this.creditOrDebit = creditOrDebit;
-        this.amount = amount;
-        this.posted = posted;
     }
 
     public Transaction(int transactionNumber, String stringDate, String description, String creditOrDebit, double amount,boolean posted, Account account) {
@@ -48,7 +44,7 @@ public class Transaction {
         this.stringDate = stringDate;
         this.description = description;
         this.creditOrDebit = creditOrDebit;
-        this.amount = amount;
+        this.amount = new BigDecimal(amount);
         this.posted = posted;
         this.account = account;
     }
@@ -59,7 +55,7 @@ public class Transaction {
         this.stringDate = stringDate;
         this.description = description;
         this.creditOrDebit = creditOrDebit;
-        this.amount = amount;
+        this.amount = new BigDecimal(amount);
         this.posted = posted;
         this.account = account;
     }
@@ -128,20 +124,28 @@ public class Transaction {
         this.creditOrDebit = creditOrDebit;
     }
 
-    public double getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
-    public void setAmount(double amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 
-    public double getTransactionBalance() {
+    public void setAmount(double amount){
+        this.amount = new BigDecimal(amount);
+    }
+
+    public BigDecimal getTransactionBalance() {
         return transactionBalance;
     }
 
-    public void setTransactionBalance(double transactionBalance) {
+    public void setTransactionBalance(BigDecimal transactionBalance) {
         this.transactionBalance = transactionBalance;
+    }
+
+    public void setTransactionBalance(double transactionBalance){
+        this.transactionBalance = new BigDecimal(transactionBalance);
     }
 
     public boolean isPosted() {

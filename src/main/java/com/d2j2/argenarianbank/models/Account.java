@@ -5,6 +5,7 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -21,9 +22,9 @@ public class Account {
     @NotEmpty
     private String openDate;
     @NotNull
-    private double startBalance;
+    private BigDecimal startBalance;
     @NotNull
-    private double currentBalance;
+    private BigDecimal currentBalance;
     @OneToMany(mappedBy = "account")
     private Set<Transaction>transactionSet;
     @ManyToMany(mappedBy = "customerAccounts")
@@ -35,11 +36,11 @@ public class Account {
     }
 
     public Account(String accountName, String openDate, double startBalance) {
-        this.accountName = accountName;
-        this.openDate = openDate;
-        this.startBalance = startBalance;
         this.transactionSet = new HashSet<>();
         this.accountCustomers = new HashSet<>();
+        this.accountName = accountName;
+        this.openDate = openDate;
+        this.startBalance = new BigDecimal(startBalance);
     }
 
     public long getId() {
@@ -74,20 +75,28 @@ public class Account {
         this.openDate = openDate;
     }
 
-    public double getStartBalance() {
+    public BigDecimal getStartBalance() {
         return startBalance;
     }
 
-    public void setStartBalance(double startBalance) {
+    public void setStartBalance(BigDecimal startBalance) {
         this.startBalance = startBalance;
     }
 
-    public double getCurrentBalance() {
+    public void setStartBalance(double startBalance){
+        this.startBalance = new BigDecimal(startBalance);
+    }
+
+    public BigDecimal getCurrentBalance() {
         return currentBalance;
     }
 
-    public void setCurrentBalance(double currentBalance) {
+    public void setCurrentBalance(BigDecimal currentBalance) {
         this.currentBalance = currentBalance;
+    }
+
+    public void  setCurrentBalance(double startBalance){
+        this.currentBalance = new BigDecimal(startBalance);
     }
 
     public Set<Transaction> getTransactionSet() {
